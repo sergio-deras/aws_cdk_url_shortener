@@ -1,9 +1,7 @@
 import setuptools
 
-
 with open("README.md") as fp:
     long_description = fp.read()
-
 
 setuptools.setup(
     name="url_shortener",
@@ -18,10 +16,12 @@ setuptools.setup(
     package_dir={"": "url_shortener"},
     packages=setuptools.find_packages(where="url_shortener"),
 
+    # pip install -r requirements.txt
     install_requires=[
         "aws-cdk.core==1.85.0",
         "aws-cdk.aws-dynamodb",
-        "aws-cdk.aws-apigateway"
+        "aws-cdk.aws-apigateway",
+        "aws-cdk.aws-ecs",
     ],
 
     python_requires=">=3.6",

@@ -1,5 +1,6 @@
 from aws_cdk import core, aws_dynamodb, aws_lambda, aws_apigateway
 
+
 # Share existing code
 # from common import CoStack
 
@@ -25,3 +26,17 @@ class UrlShortenerStack(core.Stack):
         function.add_environment("TABLE_NAME", table.table_name)
 
         api = aws_apigateway.LambdaRestApi(self, "MyAPI", handler=function)
+
+
+from traffico import Traffico
+
+
+# New stack
+class TrafficStack(core.Stack):
+
+    def __init__(self, scope: core.Construct, construct_id: str, **kwargs) -> None:
+        super().__init__(scope, construct_id, **kwargs)
+
+        Traffico(self, "TestTraffic",
+                 url="https://ft3oz2m2nb.execute-api.us-west-1.amazonaws.com/prod/ac4652f1",
+                 tps=2)
